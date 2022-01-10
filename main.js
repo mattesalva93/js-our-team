@@ -31,11 +31,13 @@ const team = [
   },
 ];
 
-
+//funzione che uso per generare una card e relative info dato un array
 function generaCard(mioArray){
   let nuovaCard = "";
   for (i=0; i<mioArray.length;i++){
     nuovaCard += `
+    <div class="team-card">
+
       <div class="card-image">
         <img
           src="img/${mioArray[i].image}"
@@ -46,9 +48,13 @@ function generaCard(mioArray){
         <h3>${mioArray[i].name}</h3>
         <p>${mioArray[i].role}</p>
       </div>
+
+    </div>
     `;
   }
 return nuovaCard;
 }
 
-console.log(generaCard(team));
+//dichiaro dove voglio che vengano stampate queste card nel DOM
+const stampaTeam = document.querySelector(".team-container");
+stampaTeam.innerHTML = generaCard(team);
