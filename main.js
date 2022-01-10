@@ -35,25 +35,45 @@ const team = [
 function generaCard(mioArray){
   let nuovaCard = "";
   for (i=0; i<mioArray.length;i++){
-    nuovaCard += `
-    <div class="team-card">
-
-      <div class="card-image">
-        <img
-          src="img/${mioArray[i].image}"
-          alt="${mioArray[i].name}"
-        />
+    if ( i > 5 ){
+      nuovaCard += `
+      <div class="team-card">
+  
+        <div class="card-image">
+          <img
+            src="${mioArray[i].image}"
+            alt="${mioArray[i].name}"
+          />
+        </div>
+        <div class="card-text">
+          <h3>${mioArray[i].name}</h3>
+          <p>${mioArray[i].role}</p>
+        </div>
+  
       </div>
-      <div class="card-text">
-        <h3>${mioArray[i].name}</h3>
-        <p>${mioArray[i].role}</p>
-      </div>
+      `;
+    }else{
+      nuovaCard += `
+      <div class="team-card">
 
-    </div>
-    `;
+        <div class="card-image">
+          <img
+            src="img/${mioArray[i].image}"
+            alt="${mioArray[i].name}"
+          />
+        </div>
+        <div class="card-text">
+          <h3>${mioArray[i].name}</h3>
+          <p>${mioArray[i].role}</p>
+        </div>
+
+      </div>
+      `;
+    }
   }
 return nuovaCard;
 }
+
 
 let aggiungiMembro = document.getElementById("addMemberButton");
 aggiungiMembro.addEventListener("click", function(){
@@ -69,6 +89,8 @@ aggiungiMembro.addEventListener("click", function(){
 
   console.log(nuovoMembro);
   team.push(nuovoMembro);
+
+  
 
   stampaTeam.innerHTML = generaCard(team);
 })
