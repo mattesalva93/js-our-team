@@ -30,3 +30,25 @@ const team = [
     image: 'barbara-ramos-graphic-designer.jpg',
   },
 ];
+
+
+function generaCard(mioArray){
+  let nuovaCard = "";
+  for (i=0; i<mioArray.length;i++){
+    nuovaCard += `
+      <div class="card-image">
+        <img
+          src="img/${mioArray[i].image}"
+          alt="${mioArray[i].name}"
+        />
+      </div>
+      <div class="card-text">
+        <h3>${mioArray[i].name}</h3>
+        <p>${mioArray[i].role}</p>
+      </div>
+    `;
+  }
+return nuovaCard;
+}
+
+console.log(generaCard(team));
