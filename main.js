@@ -35,13 +35,13 @@ const team = [
 function generaCard(mioArray){
   let nuovaCard = "";
   for (i=0; i<mioArray.length;i++){
-    if ( i > 5 ){
+    if ( i < 6 ){
       nuovaCard += `
       <div class="team-card">
   
         <div class="card-image">
           <img
-            src="${mioArray[i].image}"
+            src="img/${mioArray[i].image}"
             alt="${mioArray[i].name}"
           />
         </div>
@@ -58,7 +58,7 @@ function generaCard(mioArray){
 
         <div class="card-image">
           <img
-            src="img/${mioArray[i].image}"
+            src="${mioArray[i].image}"
             alt="${mioArray[i].name}"
           />
         </div>
@@ -74,9 +74,14 @@ function generaCard(mioArray){
 return nuovaCard;
 }
 
+//dichiaro dove voglio che vengano stampate queste card nel DOM
+const stampaTeam = document.querySelector(".team-container");
+stampaTeam.innerHTML = generaCard(team);
 
+//compilato il form e premuto il tasto un nuovo membro viene aggiunto al team
 let aggiungiMembro = document.getElementById("addMemberButton");
 aggiungiMembro.addEventListener("click", function(){
+
   let nuovoNome = document.getElementById("name").value;
   let nuovoRuolo = document.getElementById("role").value;
   let nuovoImmagine = document.getElementById("image").value;
@@ -89,13 +94,6 @@ aggiungiMembro.addEventListener("click", function(){
 
   console.log(nuovoMembro);
   team.push(nuovoMembro);
-
-  
-
   stampaTeam.innerHTML = generaCard(team);
 })
-
-//dichiaro dove voglio che vengano stampate queste card nel DOM
-const stampaTeam = document.querySelector(".team-container");
-stampaTeam.innerHTML = generaCard(team);
 
