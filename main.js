@@ -55,6 +55,25 @@ function generaCard(mioArray){
 return nuovaCard;
 }
 
+let aggiungiMembro = document.getElementById("addMemberButton");
+aggiungiMembro.addEventListener("click", function(){
+  let nuovoNome = document.getElementById("name").value;
+  let nuovoRuolo = document.getElementById("role").value;
+  let nuovoImmagine = document.getElementById("image").value;
+
+  const nuovoMembro = {
+    name : nuovoNome,
+    role : nuovoRuolo,
+    image : nuovoImmagine
+  }
+
+  console.log(nuovoMembro);
+  team.push(nuovoMembro);
+
+  stampaTeam.innerHTML = generaCard(team);
+})
+
 //dichiaro dove voglio che vengano stampate queste card nel DOM
 const stampaTeam = document.querySelector(".team-container");
 stampaTeam.innerHTML = generaCard(team);
+
